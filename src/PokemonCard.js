@@ -26,9 +26,6 @@ const PokemonCard = (props) => {
   var secondType;
   var typeOutput;
 
-  const moveList = props.pokemon.moves.slice(0, 4);
-  console.log("image", props.pokemon.sprites.front_default);
-
   if (props.pokemon.types.length > 1) {
     secondType = props.pokemon.types[1].type.name;
     typeOutput = " / " + secondType;
@@ -59,10 +56,7 @@ const PokemonCard = (props) => {
           ></div>
           <div>
             {props.pokemon.name}
-            <img
-              src={props.pokemon.sprites.front_default}
-              alt="Pokemon model"
-            ></img>
+            <img src={props.pokemon.sprites} alt="Pokemon model"></img>
             <div>
               <u>
                 <strong>Type: </strong>
@@ -89,7 +83,7 @@ const PokemonCard = (props) => {
         </div>
         {props.pokemon.stats.map((statInfo) => (
           <div>
-            {statInfo.stat.name} : {statInfo.base_stat}
+            {statInfo.name} : {statInfo.base_stat}
           </div>
         ))}
       </div>
@@ -108,7 +102,7 @@ const PokemonCard = (props) => {
           </u>
         </div>
         {props.pokemon.abilities.map((abilitySet) => (
-          <div>{abilitySet.ability.name}</div>
+          <div>{abilitySet.ability}</div>
         ))}
       </div>
     );
@@ -126,8 +120,8 @@ const PokemonCard = (props) => {
           </u>
         </div>
 
-        {moveList.map((moveset) => (
-          <div>{moveset.move.name}</div>
+        {props.pokemon.moves.map((moveset) => (
+          <div>{moveset.move}</div>
         ))}
       </div>
     );
