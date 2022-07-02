@@ -7,18 +7,10 @@ import preloadedPokemonData from "./preloadingPokemonData";
 function App() {
   const [allPokemon, setAllPokemon] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(pokemonurl).then((response) => {
-  //     setListOfPokemon(response.data.results);
-  //     console.log("here");
-  //     console.log(response);
-  //     console.log("bulbasaur", response.data.results[0]);
-  //   });
-  // }, []);
-
   useEffect(() => {
-    console.log("list of pokemone names");
-    setAllPokemon(preloadedPokemonData());
+    const timeout = setTimeout(() => {
+      setAllPokemon(preloadedPokemonData());
+    }, 1500);
   }, []);
 
   return (
@@ -36,7 +28,9 @@ function App() {
             alt="spinning pokeball"
           ></img>
           <figcaption>
-            <strong>Loading</strong>
+            <strong>
+              <h1>Loading...</h1>
+            </strong>
           </figcaption>
         </figure>
       )}
